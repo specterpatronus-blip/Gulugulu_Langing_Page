@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Instrument Serif', serif;
+  --font-logo: 'Syne', sans-serif;
+
+  --color-bg: hsl(var(--bg));
+  --color-surface: hsl(var(--surface));
+  --color-text-primary: hsl(var(--text));
+  --color-muted: hsl(var(--muted));
+  --color-stroke: hsl(var(--stroke));
+  --color-accent: hsl(var(--accent));
+
+  @keyframes scroll-down {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+  }
+
+  @keyframes role-fade-in {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  --animate-scroll-down: scroll-down 1.5s ease-in-out infinite;
+  --animate-role-fade-in: role-fade-in 0.4s ease-out forwards;
+  --animate-gradient-shift: gradient-shift 6s ease infinite;
+
+  @keyframes flip {
+    0%   { transform: rotateX(0deg); }
+    45%  { transform: rotateX(-90deg); }
+    55%  { transform: rotateX(-90deg); }
+    100% { transform: rotateX(0deg); }
+  }
+
+  @keyframes fade {
+    0%   { opacity: 1; }
+    44%  { opacity: 1; }
+    45%  { opacity: 0; }
+    80%  { opacity: 0; }
+    81%  { opacity: 1; }
+    100% { opacity: 1; }
+  }
+}
+
+:root {
+  --bg: 0 0% 100%;
+  --surface: 210 20% 98%;
+  --text: 220 30% 15%;
+  --muted: 215 15% 45%;
+  --stroke: 214 20% 90%;
+  --accent: 221 100% 55%;
+}
+
+@layer base {
+  body {
+    @apply font-body bg-bg text-text-primary;
+  }
+}
+
+@layer components {
+  .accent-gradient {
+    background: linear-gradient(90deg, #4E85BF 0%, #2563EB 100%);
+  }
+
+  .accent-gradient-border {
+    position: relative;
+    border: 1px solid transparent;
+    background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                linear-gradient(90deg, #4E85BF 0%, #2563EB 100%) border-box;
+  }
+}
+
+.blur-in {
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.name-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* Shimmer glow animation for "Gulu" accent text */
+.hero-shimmer {
+  background: linear-gradient(
+    120deg,
+    hsl(var(--accent)) 0%,
+    hsl(var(--accent)) 35%,
+    #93c5fd 50%,
+    hsl(var(--accent)) 65%,
+    hsl(var(--accent)) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-sweep 3s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--stroke));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted));
+}
+
+/* ── FlipText Component ────────────────────────────────── */
+.flip-char {
+  color: inherit;
+  -webkit-text-fill-color: transparent;
+  height: 1.2em;
+  line-height: 1.2em;
+  vertical-align: middle;
+  animation: flip var(--flip-duration, 2.2s) var(--flip-delay, 0s) var(--flip-iteration, infinite) ease;
+}
+
+.flip-char::before,
+.flip-char::after {
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+  content: attr(data-char);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  animation: fade var(--flip-duration, 2.2s) var(--flip-delay, 0s) var(--flip-iteration, infinite) ease;
+}
+
+/* Front face */
+.flip-char::after {
+  transform: translate(-50%, -50%) translateZ(0.6em);
+}
+
+/* Bottom face (rotates in) */
+.flip-char::before {
+  transform: translate(-50%, -50%) rotateX(-90deg) translateZ(0.6em);
+  opacity: 0;
+}
