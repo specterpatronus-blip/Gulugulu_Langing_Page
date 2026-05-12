@@ -61,7 +61,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section id="hero" ref={containerRef} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section id="hero" ref={containerRef} className="relative h-[100svh] w-full overflow-hidden flex items-center justify-center">
       {/* Background Video */}
       <div className="absolute inset-0 z-0 hero-bg-animate">
         <video
@@ -77,45 +77,45 @@ const Hero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl">
-        <span className="blur-in block text-xs text-muted uppercase tracking-[0.3em] mb-8">
+      <div className="relative z-10 text-center px-5 sm:px-6 max-w-4xl w-full">
+        <span className="blur-in block text-[10px] sm:text-xs text-muted uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-6 sm:mb-8">
           LA REVOLUCIÓN DEL APRENDIZAJE
         </span>
 
         {/* Title with blue Gulu + white gulu + glow halo */}
-        <div className="name-reveal relative mb-6">
+        <div className="name-reveal relative mb-4 sm:mb-6">
           {/* Pulsing glow halo behind title */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-accent/30 blur-[80px] animate-pulse" />
+            <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-full bg-accent/30 blur-[60px] sm:blur-[80px] animate-pulse" />
           </div>
-          <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight">
+          <h1 className="relative text-[3.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight">
             <span className="hero-shimmer text-accent">Gulu</span>
             <span className="text-text-primary">gulu</span>
           </h1>
         </div>
 
         {/* FlipFadeText role cycling — VengeanceUI */}
-        <div className="blur-in mb-6">
-          <p className="text-lg md:text-xl text-muted mb-2">Un ecosistema de aprendizaje</p>
+        <div className="blur-in mb-4 sm:mb-6">
+          <p className="text-base sm:text-lg md:text-xl text-muted mb-2">Un ecosistema de aprendizaje</p>
           <FlipFadeText
             words={["Seguro", "Privado", "Autónomo", "Local"]}
             interval={2200}
             letterDuration={0.5}
             staggerDelay={0.08}
             exitStaggerDelay={0.04}
-            textClassName="text-2xl md:text-4xl font-display italic tracking-wide text-accent justify-center"
-            className="min-h-[48px]"
+            textClassName="text-xl sm:text-2xl md:text-4xl font-display italic tracking-wide text-accent justify-center"
+            className="min-h-[36px] sm:min-h-[48px]"
           />
         </div>
 
-        <p className="blur-in text-sm md:text-base text-muted max-w-lg mx-auto mb-12 leading-relaxed">
+        <p className="blur-in text-xs sm:text-sm md:text-base text-muted max-w-lg mx-auto mb-8 sm:mb-12 leading-relaxed px-2">
           El buscador privado y offline guiado por <span className="hero-shimmer text-accent font-semibold">Gulu</span> que transforma tu institución. Todo el conocimiento del mundo, bajo tu control.
         </p>
 
-        <div className="blur-in flex flex-wrap items-center justify-center gap-4">
+        <div className="blur-in flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <button
             onClick={() => window.open('https://wa.me/your-number', '_blank')}
-            className="group relative rounded-full text-sm px-7 py-3.5 transition-all duration-300 hover:scale-105 bg-accent text-white hover:bg-accent/90"
+            className="group relative rounded-full text-sm px-7 py-3.5 transition-all duration-300 hover:scale-105 bg-accent text-white hover:bg-accent/90 w-full sm:w-auto"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute -inset-[1.5px] rounded-full accent-gradient animate-gradient-shift" />
@@ -125,7 +125,7 @@ const Hero = () => {
 
           <button
             onClick={() => scrollToSection('pricing')}
-            className="group relative rounded-full text-sm px-7 py-3.5 transition-all duration-300 hover:scale-105 border-2 border-stroke bg-bg text-text-primary hover:border-transparent"
+            className="group relative rounded-full text-sm px-7 py-3.5 transition-all duration-300 hover:scale-105 border-2 border-stroke bg-bg text-text-primary hover:border-transparent w-full sm:w-auto"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute -inset-[1.5px] rounded-full accent-gradient animate-gradient-shift" />
@@ -135,10 +135,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator — hidden on very small screens */}
       <div
         onClick={() => scrollToSection('features')}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 cursor-pointer group"
+        className="hidden sm:flex absolute bottom-12 left-1/2 -translate-x-1/2 flex-col items-center gap-4 cursor-pointer group"
       >
         <span className="text-[10px] text-muted uppercase tracking-[0.2em] group-hover:text-text-primary transition-colors">Descubrelo</span>
         <div className="w-px h-10 bg-stroke relative overflow-hidden">

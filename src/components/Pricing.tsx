@@ -42,19 +42,21 @@ const plans = [
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="bg-bg py-24 md:py-32 border-y border-stroke">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
+    <section id="pricing" className="bg-bg py-16 sm:py-24 md:py-32 border-y border-stroke">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 md:px-10 lg:px-16">
 
-        <div className="text-center mb-16 md:mb-24">
-          <h2 className="text-4xl md:text-6xl font-display text-text-primary mb-6">
+        <div className="text-center mb-10 sm:mb-16 md:mb-24">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-display text-text-primary mb-4 sm:mb-6">
             Escalabilidad <span className="hero-shimmer text-accent italic">diseñada para ti</span>
           </h2>
-          <p className="text-muted text-base md:text-lg max-w-xl mx-auto">
+          <p className="text-muted text-sm sm:text-base md:text-lg max-w-xl mx-auto px-2">
             Desde pequeñas escuelas rurales hasta grandes distritos educativos. Gulugulu crece contigo.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Mobile: horizontal scroll cards | Desktop: grid */}
+        {/* Desktop Grid */}
+        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
           {plans.map((plan, idx) => (
             <motion.div
               key={plan.name}
@@ -90,6 +92,60 @@ const Pricing = () => {
                   className={`w-full py-3 rounded-full text-sm font-medium transition-all duration-300 ${plan.popular
                       ? 'bg-accent text-white hover:scale-105 hover:bg-accent/90'
                       : 'border border-stroke text-text-primary hover:border-accent hover:text-accent'
+                    }`}
+                >
+                  Solicitar Plan {plan.name}
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile: stacked cards */}
+        <div className="flex flex-col gap-4 sm:hidden">
+          {plans.map((plan, idx) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              viewport={{ once: true }}
+              className={`relative flex flex-col p-6 rounded-2xl border ${plan.popular ? 'border-transparent bg-surface/80' : 'border-stroke bg-surface/30'}`}
+            >
+              {plan.popular && (
+                <>
+                  <div className="absolute inset-0 rounded-2xl accent-gradient-border pointer-events-none" />
+                  <div className="absolute -top-px left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-b-lg bg-accent text-white text-[9px] uppercase tracking-widest font-bold z-20">
+                    Popular
+                  </div>
+                </>
+              )}
+
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <span className="text-[9px] text-muted uppercase tracking-[0.2em] block">{plan.target}</span>
+                    <h3 className="text-2xl font-display italic text-text-primary mt-1">{plan.name}</h3>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-3xl font-display text-text-primary">{plan.price}</span>
+                  </div>
+                </div>
+
+                <ul className="flex flex-col gap-3 mb-6">
+                  {plan.features.map(feature => (
+                    <li key={feature} className="flex items-start gap-2.5 text-xs text-text-primary/80">
+                      <Check size={14} className="text-accent mt-0.5 flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => window.open('https://wa.me/your-number', '_blank')}
+                  className={`w-full py-3 rounded-full text-sm font-medium transition-all duration-300 active:scale-[0.98] ${plan.popular
+                      ? 'bg-accent text-white'
+                      : 'border border-stroke text-text-primary'
                     }`}
                 >
                   Solicitar Plan {plan.name}

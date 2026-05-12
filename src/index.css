@@ -58,9 +58,37 @@
   --accent: 221 100% 55%;
 }
 
+/* ── Smooth scroll + touch optimizations ────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @layer base {
   body {
     @apply font-body bg-bg text-text-primary;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+  }
+
+  /* Force GPU compositing on animated elements for 60fps */
+  .hero-bg-animate,
+  [class*="animate-"] {
+    will-change: transform, opacity;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -109,8 +137,9 @@
   100% { background-position: -200% 0; }
 }
 
+/* ── Scrollbar ──────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -124,6 +153,15 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted));
+}
+
+/* Hide scrollbar utility for horizontal scrollers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* ── FlipText Component ────────────────────────────────── */
@@ -162,4 +200,12 @@
 .flip-char::before {
   transform: translate(-50%, -50%) rotateX(-90deg) translateZ(0.6em);
   opacity: 0;
+}
+
+/* ── Line clamp utility ─────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

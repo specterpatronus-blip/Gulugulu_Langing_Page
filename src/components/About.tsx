@@ -46,27 +46,27 @@ const founders = [
 
 const About = () => {
   return (
-    <section id="about" className="bg-bg py-24 md:py-32 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
+    <section id="about" className="bg-bg py-16 sm:py-24 md:py-32 overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 md:px-10 lg:px-16">
         {/* Story Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start mb-20 sm:mb-32">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
               <div className="w-8 h-px bg-stroke" />
-              <span className="text-xs text-muted uppercase tracking-[0.3em]">Nuestra Historia</span>
+              <span className="text-[10px] sm:text-xs text-muted uppercase tracking-[0.2em] sm:tracking-[0.3em]">Nuestra Historia</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-display text-text-primary mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display text-text-primary mb-6 sm:mb-8">
               De un problema real a una <span className="italic">solución global</span>
             </h2>
-            <p className="text-muted text-lg leading-relaxed mb-6">
+            <p className="text-muted text-sm sm:text-lg leading-relaxed mb-4 sm:mb-6">
               Todo comenzó en las aulas de la <span className="text-text-primary font-medium">Universidad de Cundinamarca</span>. Como estudiantes de Ingeniería de Sistemas, no podíamos ignorar una realidad crítica: la brecha digital en las zonas rurales de nuestro país.
             </p>
-            <p className="text-muted text-lg leading-relaxed">
+            <p className="text-muted text-sm sm:text-lg leading-relaxed">
               Mientras el mundo avanza hacia la hiper-conectividad, miles de niños en escuelas rurales se quedan atrás por la falta de internet. Gulugulu nació para decir que el conocimiento no debe ser un privilegio de quienes tienen una conexión WiFi, sino un derecho de todos.
             </p>
           </motion.div>
@@ -81,48 +81,50 @@ const About = () => {
             {/* Background Blob */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent/5 rounded-full blur-3xl -z-10" />
             
-            <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6">
               {/* Column 1 */}
-              <div className="flex flex-col gap-4 md:gap-6">
+              <div className="flex flex-col gap-3 sm:gap-4 md:gap-6">
                 {/* Image 1 */}
-                <div className="relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-square border border-stroke shadow-sm group">
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/5] sm:aspect-square border border-stroke shadow-sm group">
                   <div className="absolute inset-0 bg-accent/10 mix-blend-multiply z-10 transition-opacity duration-500 group-hover:opacity-0" />
                   <img 
                     src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=800" 
                     alt="Educación Rural" 
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
                   />
                 </div>
                 
                 {/* Glass Card */}
-                <div className="relative bg-surface/80 backdrop-blur-xl border border-stroke p-5 md:p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                   <div className="flex items-center gap-3 mb-3">
-                      <span className="relative flex h-2.5 w-2.5">
+                <div className="relative bg-surface/80 backdrop-blur-xl border border-stroke p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                   <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                      <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-emerald-500"></span>
                       </span>
-                      <span className="text-[10px] uppercase tracking-widest font-bold text-text-primary">Hecho en Colombia</span>
+                      <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold text-text-primary">Hecho en Colombia</span>
                    </div>
-                   <p className="text-xs text-muted leading-relaxed">Desarrollado con orgullo por estudiantes de ingeniería para el futuro de la educación.</p>
+                   <p className="text-[10px] sm:text-xs text-muted leading-relaxed">Desarrollado con orgullo por estudiantes de ingeniería para el futuro de la educación.</p>
                 </div>
               </div>
 
               {/* Column 2 - Offset */}
-              <div className="flex flex-col gap-4 md:gap-6 pt-12 md:pt-16">
+              <div className="flex flex-col gap-3 sm:gap-4 md:gap-6 pt-8 sm:pt-12 md:pt-16">
                 {/* Glass Stat Card */}
-                <div className="relative bg-surface/80 backdrop-blur-xl border border-stroke p-5 md:p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-center items-center text-center">
-                   <GraduationCap className="text-accent mb-3" size={28} />
-                   <span className="text-2xl font-display text-text-primary block mb-1">100%</span>
-                   <span className="text-[10px] uppercase tracking-widest text-muted">Offline</span>
+                <div className="relative bg-surface/80 backdrop-blur-xl border border-stroke p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-center items-center text-center">
+                   <GraduationCap className="text-accent mb-2 sm:mb-3" size={24} />
+                   <span className="text-xl sm:text-2xl font-display text-text-primary block mb-1">100%</span>
+                   <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-muted">Offline</span>
                 </div>
 
                 {/* Image 2 */}
-                <div className="relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-square border border-stroke shadow-sm group">
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/5] sm:aspect-square border border-stroke shadow-sm group">
                   <div className="absolute inset-0 bg-accent/10 mix-blend-multiply z-10 transition-opacity duration-500 group-hover:opacity-0" />
                   <img 
                     src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800" 
                     alt="Inclusión Digital" 
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -131,7 +133,7 @@ const About = () => {
         </div>
 
         {/* The Evolution */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 mb-20 sm:mb-32">
           {[
             {
               icon: <Globe className="text-accent" size={24} />,
@@ -155,31 +157,33 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 rounded-3xl bg-surface/20 border border-stroke hover:bg-surface/40 transition-colors"
+              className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-surface/20 border border-stroke hover:bg-surface/40 transition-colors"
             >
-              <div className="mb-6">{item.icon}</div>
-              <h3 className="text-xl font-display italic text-text-primary mb-4">{item.title}</h3>
-              <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
+              <div className="mb-4 sm:mb-6">{item.icon}</div>
+              <h3 className="text-lg sm:text-xl font-display italic text-text-primary mb-3 sm:mb-4">{item.title}</h3>
+              <p className="text-xs sm:text-sm text-muted leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
 
         {/* ─── Team Grid — Icon-based abstract portraits ─── */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <div className="flex items-center justify-center gap-3 mb-3 sm:mb-4">
             <div className="w-8 h-px bg-stroke" />
-            <span className="text-xs text-muted uppercase tracking-[0.3em]">Co-creadores</span>
+            <span className="text-[10px] sm:text-xs text-muted uppercase tracking-[0.2em] sm:tracking-[0.3em]">Co-creadores</span>
             <div className="w-8 h-px bg-stroke" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-display text-text-primary">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-display text-text-primary">
             El equipo <span className="italic">detrás de la pantalla</span>
           </h2>
-          <p className="text-muted mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-muted mt-3 sm:mt-4 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed px-2">
             Tres ingenieros, una misión. Cada uno con su rol único, todos con el mismo propósito.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Mobile: horizontal scroll cards | Desktop: grid */}
+        {/* Desktop Grid */}
+        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
           {founders.map((person, idx) => {
             const PrimaryIcon = person.primaryIcon
             const SecondaryIcon = person.secondaryIcon
@@ -283,6 +287,60 @@ const About = () => {
                   className="h-0.5 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ background: `linear-gradient(90deg, transparent, ${person.color}, transparent)` }}
                 />
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Mobile: Vertical stack with compact cards */}
+        <div className="flex flex-col gap-4 sm:hidden">
+          {founders.map((person, idx) => {
+            const PrimaryIcon = person.primaryIcon
+            return (
+              <motion.div
+                key={person.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className={`group relative rounded-2xl border border-stroke bg-surface/10 overflow-hidden transition-all duration-500 ${person.borderGlow}`}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${person.gradient} opacity-40`} />
+                
+                <div className="relative p-5 flex items-start gap-4">
+                  {/* Icon */}
+                  <div
+                    className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center"
+                    style={{
+                      background: `linear-gradient(135deg, ${person.color}25, ${person.color}10)`,
+                      border: `1px solid ${person.color}35`
+                    }}
+                  >
+                    <PrimaryIcon size={24} style={{ color: person.color }} strokeWidth={1.5} />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-base font-semibold text-text-primary">{person.name}</h4>
+                    <p className="text-[10px] uppercase tracking-widest mb-2" style={{ color: person.color }}>{person.role}</p>
+                    <p className="text-xs text-muted leading-relaxed mb-3">{person.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {person.tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="text-[8px] uppercase tracking-wider px-1.5 py-0.5 rounded-full"
+                          style={{
+                            background: `${person.color}10`,
+                            border: `1px solid ${person.color}20`,
+                            color: `${person.color}cc`
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             )
           })}
